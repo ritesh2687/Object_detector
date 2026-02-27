@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>AI Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Real-Time YOLOv8 Object Detection</h1>
+
+    <div class="video-container">
+        <img src="{{ url_for('video') }}" width="800">
+    </div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Real-Time YOLOv8 Object Detection</h1>
+
+    <div class="button-container">
+        <button onclick="startWebcam()">Start Webcam</button>
+        <button onclick="stopWebcam()">Stop Webcam</button>
+    </div>
+
+    <div class="video-container">
+        <img id="video-stream" src="" width="800">
+    </div>
+
+<script>
+function startWebcam() {
+    fetch('/start', { method: 'POST' }).then(() => {
+        document.getElementById('video-stream').src = "/video";
+    });
+}
+
+function stopWebcam() {
+    fetch('/stop', { method: 'POST' }).then(() => {
+        document.getElementById('video-stream').src = "";
+    });
+}
+</script>
+
+</body>
+</html>
